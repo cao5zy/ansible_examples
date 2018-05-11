@@ -1,0 +1,15 @@
+---
+
+- name: get git project name form url
+  hosts: localhost
+  
+  vars:
+    git_url_exp: "[\\w_\\d]+(?=\\.git)"
+    git_url: git@github.houston.entsvcs.net:zongying-cao/smtp_relay_service.git
+    git_url1 : "{{git_url|regex_search(git_url_exp)}}"
+  tasks:
+  - name: get project name
+    debug: var=git_url1
+    
+
+...
